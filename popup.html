@@ -1,14 +1,74 @@
 <!DOCTYPE html>
-  <html>
+<html>
+  <head>
     <head>
-      <head>
-        <link rel="stylesheet" href="styles.css">
-      </head>
+      <link rel="stylesheet" href="styles/styles.css">
     </head>
-    <body>
-      <h1>To do list Today</h1>
-      
-      <button id="changeColor"></button>
-      <script src="popup.js"></script>
-    </body>
-  </html>
+  </head>
+  <body>
+    <h1>To do list Today</h1>
+
+    <label for="checkbox-group-item checkbox-wrapper star-inserted">
+      <span class="checkbox">
+        <input type="checkbox" class="checkbox-input pristine valid touched">
+        <span class="checkbox-inner"></span>
+      </span>
+      <span>
+        <span>To do</span>
+      </span>
+    </label>
+
+    <label for="checkbox-group-item checkbox-wrapper star-inserted">
+      <span class="checkbox checkbox-checked">
+        <input type="checkbox" class="checkbox-input pristine valid touched">
+        <span class="checkbox-inner"></span>
+      </span>
+      <span>
+        <span>Done</span>
+      </span>
+    </label>
+
+    <div class="demo">
+      <p>
+        <input type="checkbox" name="item1" id="item1">
+        <label for="item1">
+          <span></span>To do 1
+        </label>
+      </p>
+  
+      <p>
+        <input type="checkbox" name="item2" id="item2" checked>
+        <label for="item2">
+          <span></span>Done 1
+        </label>
+      </p>
+    </div>
+
+    <h1>Custom Checkboxes</h1>
+<label class="container">One
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Two
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Three
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Four
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+
+    
+    <div class="class">
+      <input type="checkbox" name="" id="">
+      <label for="item1">To Do</label>
+    </div>
+    
+    <button id="changeColor"></button>
+    <script src="scripts/popup.js"></script>
+  </body>
+</html>
