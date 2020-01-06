@@ -1,8 +1,7 @@
 {
-   "name": "Getting Started Example",
+   "name": "Dodo List",
    "version": "1.0",
-   "description": "Build an Extension!",
-   "permissions": ["activeTab", "declarativeContent", "storage"],
+   "description": "To do list extension!",   
    "background": {
      "scripts": ["background.js"],
      "persistent": false
