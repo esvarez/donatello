@@ -1,17 +1,22 @@
 <!doctype html>
-<style type="text/css">
-	#mainPopup {
-		padding: 10px;
-		height: 200px;
-		width: 400px;
-		font-family: Helvetica, Ubuntu, Arial, sans-serif;
-	}
-	h1 {
-		font-size: 2em;
-	}
-</style>
-
-<div id="mainPopup">
-<h1>Hello extensionizr!</h1>
-<p>To shut this popup down, edit the manifest file and remove the "default popup" key. To edit it, just edit ext/browser_action/browser_action.html. The CSS is there, too.</p>
-</div>
+<html>
+	<head>
+		<link rel="stylesheet" href="../../css/styles.css">
+	</head>
+	<body>
+		<div id="mainPopup">
+			<h1>Today's Dodos</h1>
+			<div id="task-container"></div>
+			<input type="checkbox" class="form-checkbox" id="form-checkbox">
+			<div class="formContainer">
+				<form action="" class="form">
+					<input type="text" placeholder="New Dodo" class="form_input" required>
+					<label for="form-checkbox" class="form_buttonLabel">
+						<button class="form_button" type="button">Send</button>
+					</label>
+					<label for="form_toggle" for="form-checkbox" data-tittle="New Dodo"></label>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
