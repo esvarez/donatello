@@ -140,7 +140,11 @@ img.icon {
   position: relative;
   overflow: hidden;
   box-shadow: 0px 1px 1px rgba(0,0,0,0.3);
-  background-color: #2196F3;
+  background-color: #2196F3;  
+}
+
+.block {
+  display: block;
 }
 
 span.btn-text {

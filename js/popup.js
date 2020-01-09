@@ -1,6 +1,5 @@
 'use strict';
 
-let changeColor = document.getElementById('changeColor');
 let taskContainer = document.getElementById('task-container');
 
 chrome.storage.sync.get('tasks', function(data) {
@@ -29,10 +28,12 @@ chrome.storage.sync.get('tasks', function(data) {
   taskContainer.appendChild(fragment)
 })
 
-chrome.storage.sync.get('color', function(data) {
-  changeColor.style.backgroundColor = data.color;
-  changeColor.setAttribute('value', data.color);
-});
+function compare(a, b) {
+  return (a.done)? 1 : -1;
+}
+/*
+
+let changeColor = document.getElementById('changeColor');
 
 changeColor.onclick = function(element) {
   let color = element.target.value;
@@ -43,6 +44,8 @@ changeColor.onclick = function(element) {
   });
 };
 
-function compare(a, b) {
-  return (a.done)? 1 : -1;
-}
+chrome.storage.sync.get('color', function(data) {
+  changeColor.style.backgroundColor = data.color;
+  changeColor.setAttribute('value', data.color);
+});
+*/
