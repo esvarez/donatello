@@ -1,24 +1,40 @@
 <!doctype html>
-<head>
-	<link rel="stylesheet" href="../../css/styles.css">
+<head>	<link rel="stylesheet" href="../../css/styles.css">
 </head>
-<style type="text/css">
-	#mainPopup {
-		padding: 10px;
-		height: 200px;
-		width: 400px;
-		font-family: Helvetica, Ubuntu, Arial, sans-serif;
-	}
-	h1 {
-		font-size: 2em;
-	}
-</style>
 
-<div id="mainPopup">
-<h1>Hello extensionizr!</h1>
-<p>To shut this popup down, edit the manifest file and remove the "default popup" key. To edit it, just edit ext/browser_action/browser_action.html. The CSS is there, too.</p>
+<h1>Today's Dodos</h1>
+WTF
+<input class="c-checkbox" type="checkbox" id="checkbox">
+<div class="c-formContainer">
+	<form class="c-form" action="">
+		<input class="c-form__input" placeholder="New Dodo" type="text" required>
+		<label class="c-form__buttonLabel" for="checkbox">
+			<button class="c-form__button" type="button" id="btn">Add</button>
+		</label>
+		<label id="abc" class="c-form__toggle" for="checkbox" data-title="Add Dodo"></label>
+	</form>
 </div>
-<!--
+<script src="">
+	const button = document.getElementById("abc"),
+	checkbox = document.getElementById("checkbox"),
+	btn = document.getElementById("btn")
+
+	btn.addEventListener("click", function(){ 
+    	console.log('Algo')
+	});
+
+	/* button.addEventListener("click", function(){ 
+    	console.log(checkbox)
+	}); */
+</script>
+
+		<!--
+<div id="mainPopup">
+	
+	<div id="task-container"></div>
+			
+	
+</div>
 	<html>
 	<head>
 		<link rel="stylesheet" href="../../css/styles.css">

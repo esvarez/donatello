@@ -4,47 +4,43 @@ $font-stack: Roboto, Helvetica, Ubuntu, Arial, sans-serif;
 $font-size: 10px;
 
 $black: #000000;
-$cornflower-lilac: #ffaea9;
-$salmon: #ff7b73;
 $white: #ffffff;
-$your-pink: #ffcccc;
-/*
-html{   
-   body {
-      padding: 0;
-      margin: 0;
-      width: 270px;
-      background-color: $bg-color;
-      color: #212121;
-      font-family: $font-stack;
-      font-size: $font-size;
-      line-height: 18px;
-      user-select: none;
-   }
-} 
-#mainPopup {
+//$cornflower-lilac: #ffaea9;
+$cornflower-lilac: #99d3df;
+$sky-blue: #328CC1;
+//$salmon: #ff7b73;
+$salmon: #428dac;
+$bludon: #002B82; 
+//$your-pink: #ffcccc;
+$your-pink: #88bbd6;
+$your-blue: #328CC1;
+body {
    padding: 10px;
    max-height: 700px;
-   width: 300px;      
+   width: 370px;      
+   font-size: 10px; // change value to scale
+   font-family: Roboto, sans-serif;
+    
+   margin: 0;
+   display: grid;   
+   place-items: center;   
 }
 h1 {
    font-size: 2em;
 }
 .button-container {
+   width: 100%;
    margin: 0;
-   display: grid;
-   height: 100vh;
-   place-items: center;   
- 
+   display: grid;   
+   place-items: center;    
 }
-
 
 .c-checkbox {
    display: none;
 
    &:checked + .c-formContainer {
        .c-form {
-           width: 37.5em;
+           width: 25em;
        }
 
        .c-form__toggle {
@@ -65,7 +61,7 @@ h1 {
    &:not(:checked),
    &:checked {
        + .c-formContainer .c-form__input:required:valid ~ .c-form__toggle::before {
-           content: 'Thank You! \1F60A';
+           content: 'Added! \1F60A';
        }
    }
 
@@ -80,8 +76,8 @@ h1 {
 .c-formContainer,
 .c-form,
 .c-form__toggle {
-   width: 20em;
-   height: 6.25em;
+   width: 12em;
+   height: 3.25em;
 }
 
 .c-formContainer {
@@ -121,7 +117,7 @@ h1 {
    justify-content: center;
 
    &::before {
-       font-size: 1.75em;
+       font-size: 1.5em;
        content: attr(data-title);
    }
 }
@@ -137,7 +133,7 @@ h1 {
 
 .c-form__input,
 .c-form__buttonLabel {
-   font-size: 1.75em;
+   font-size: 1.5em;
    opacity: 0;
    visibility: hidden;
    transform: scale(0.7);
@@ -190,4 +186,3 @@ h1 {
    width: 5em;
    background-color: $salmon;
 }
-*/
