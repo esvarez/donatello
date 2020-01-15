@@ -1,7 +1,12 @@
 let taskContainer = document.getElementById('task-container');
 
+const search = document.getElementById('search-button')
 
+search.onclick = function() {
+  search.parentElement.classList.toggle('open')
+}
 
+/*
 function setTask() {
   //let tasks = data.tasks
   let tasks = [
@@ -65,6 +70,7 @@ label.addEventListener('click', function() {
 
 /* button.addEventListener("click", function(){ 
    console.log(checkbox)
-}); */
+}); 
 
 setTask()
+*/
