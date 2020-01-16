@@ -1,20 +1,28 @@
-let taskContainer = document.getElementById('task-container');
-
-const search = document.getElementById('search-button')
+const taskContainer = document.getElementById('task-container'),
+      search = document.getElementById('add-button'),
+      inputTask = document.getElementById('input-task')
 
 search.onclick = function() {
+  console.log(inputTask.value)
   search.parentElement.classList.toggle('open')
+  addTask(inputTask.value)  
 }
 
-/*
+let tasks = [
+  {id: 1, name: 'One', done: true},
+  {id: 2, name: 'Two Two', done: false},
+  {id: 3, name: 'Three Three Three', done: true},
+  {id: 4, name: 'four four four four', done: true},
+]
+
+function addTask(task) {
+   tasks.push(
+    {id: 1, name: task, done: false},
+   )
+}
+
 function setTask() {
-  //let tasks = data.tasks
-  let tasks = [
-   {id: 1, name: 'One', done: true},
-   {id: 2, name: 'Two Two', done: false},
-   {id: 3, name: 'Three Three Three', done: true},
-   {id: 4, name: 'four four four four', done: true},
- ]
+  //let tasks = data.tasks  
   tasks.sort(compare)
 
   let fragment = document.createDocumentFragment()
@@ -43,7 +51,9 @@ function compare(a, b) {
   return (a.done)? 1 : -1;
 }
 
+setTask()
 
+/*
 console.log('...')
 const checkbox = document.getElementById("checkbox"),
 btn = document.getElementById("btn"),
@@ -68,9 +78,9 @@ label.addEventListener('click', function() {
    console.log('click')
 })
 
-/* button.addEventListener("click", function(){ 
+ button.addEventListener("click", function(){ 
    console.log(checkbox)
 }); 
 
-setTask()
+
 */
