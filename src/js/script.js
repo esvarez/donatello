@@ -5,9 +5,35 @@ const taskContainer = document.getElementById('task-container'),
 const dodos = []
 
 search.onclick = function() {
-  console.log(inputTask.value)  
   search.parentElement.classList.toggle('open')
-  addTask(inputTask.value)  
+  if (inputTask.value) {
+    console.log('no vacio')  
+    let label = document.createElement('label'),
+        input = document.createElement('input'),
+        spanCheck = document.createElement('span'),
+        spanText = document.createElement('span');
+
+    input.type = 'checkbox'    
+    spanCheck.classList.add('checkmark')
+    spanText.innerText = inputTask.value  
+    label.classList.add('container')      
+    label.appendChild(input)
+    label.appendChild(spanCheck)
+    label.appendChild(spanText)    
+
+    insertAfter(label, dodos[dodos.length - 1])
+
+    dodos.push(label) 
+    inputTask.value = ''       
+  } else {
+    console.log('vacio')  
+  }
+  console.log(dodos)
+  //addTask(inputTask.value)  
+}
+
+function insertAfter(el, referenceNode) {
+    referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
 }
 
 let tasks = [
