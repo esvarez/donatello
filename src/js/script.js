@@ -2,8 +2,10 @@ const taskContainer = document.getElementById('task-container'),
       search = document.getElementById('add-button'),
       inputTask = document.getElementById('input-task')
 
+const dodos = []
+
 search.onclick = function() {
-  console.log(inputTask.value)
+  console.log(inputTask.value)  
   search.parentElement.classList.toggle('open')
   addTask(inputTask.value)  
 }
@@ -32,10 +34,7 @@ function setTask() {
         spanCheck = document.createElement('span'),
         spanText = document.createElement('span');
 
-    input.type = 'checkbox'
-    if(task.done){
-      input.checked='checked'
-    }
+    input.type = 'checkbox'    
     spanCheck.classList.add('checkmark')
     spanText.innerText = task.name;  
     label.classList.add('container')      
@@ -43,8 +42,17 @@ function setTask() {
     label.appendChild(spanCheck)
     label.appendChild(spanText)
     fragment.appendChild(label)
+    if (task.done){
+      input.checked='checked'      
+    } else {
+      dodos.push(label)
+    }
   });
   taskContainer.appendChild(fragment)
+}
+
+function createTask(task) {
+  
 }
 
 function compare(a, b) {
@@ -52,6 +60,7 @@ function compare(a, b) {
 }
 
 setTask()
+
 
 /*
 console.log('...')
