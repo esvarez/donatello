@@ -1,0 +1,34 @@
+<h2>Add Dodo</h2>
+
+<form nz-form [formGroup]="validateForm" class="form" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your username!">
+      <nz-input-group nzPrefixIcon="appstore-add">
+        <input type="text" nz-input formControlName="userName" placeholder="New dodo" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your Password!">
+      <nz-input-group nzPrefixIcon="file-text">
+        <input type="password" nz-input formControlName="password" placeholder="Description" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your Password!">
+      <nz-date-picker nzPlaceHolder="Due date" ></nz-date-picker>
+    </nz-form-control>
+  </nz-form-item>
+  <!--
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your Password!">
+      <nz-input-group nzPrefixIcon="file-text">
+        <input type="password" nz-input formControlName="password" placeholder="Category" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  -->
+  <button nz-button class="form-button form-margin" nzType="primary">Add Dodo</button>
+  <button nz-button class="form-button form-margin" >Cancel</button>
+</form>
