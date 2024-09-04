@@ -3,9 +3,16 @@ package main
 import "github.com/fogleman/gg"
 
 func main() {
-	dc := gg.NewContext(1000, 1000)
-	dc.DrawCircle(500, 500, 400)
-	dc.SetRGB(0, 0, 0)
-	dc.Fill()
-	dc.SavePNG("out.png")
+	params := sketch.UserParams{
+		DesWidth: desWith,
+		DesHeight: 2000,
+		StrokeRatio: 0.75,
+		StrokeReduction: 0.002,
+		StrokeInventionThreshold : 0.05,
+		StrokeJitter: int(0.1 * float64(desWidth)),
+		InitialAlpha: 0.1,
+		AlphaIncrease: 0.36,
+		MinEdgeCount: 3,
+		MaxEdgeCount:4,
+	}
 }
