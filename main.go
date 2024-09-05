@@ -2,6 +2,9 @@ package main
 
 import "github.com/fogleman/gg"
 
+
+
+
 func main() {
 	params := sketch.UserParams{
 		DesWidth: desWith,
@@ -15,4 +18,18 @@ func main() {
 		MinEdgeCount: 3,
 		MaxEdgeCount:4,
 	}
+}
+
+func saveOutput (img image.Image, filePath string) error {
+	f, err := onCreate(filePath)
+	if err != nil {
+		return err 
+	}
+	defer.Close()
+
+	if err := png.Encode(f, img); err != nil {
+		return nil
+	}
+
+	return nil
 }
