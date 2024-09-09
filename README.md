@@ -1,8 +1,3 @@
-# Lord-of-the-Tokens
+# Donatello
 
-Lord of the Tokens is a system to generate, authenticate and authorized JWTs is written in go
-
-One system to rule them all,
-one system to find them,
-One system to bring them all
-and in the darkness bind them.
+Simple application of generative art in go through the use of algorithms. 

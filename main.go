@@ -7,6 +7,8 @@ import (
 	"log"
 	"math/rand"
 	"os"
+	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/esvarez/donatello/sketch"
@@ -37,15 +39,15 @@ func main() {
 		AlphaIncrease:            0.36,
 		StrokeInventionThreshold: 0.05,
 		StrokeJitter:             int(0.1 * float64(destWith)),
-		MinEdgeCount:             2,
-		MaxEdgeCount:             3,
+		MinEdgeCount:             3,
+		MaxEdgeCount:             8,
 	})
 
 	for i := 0; i < totalCycleCount; i++ {
 		newSketch.Update()
 	}
 
-	if err := saveOutput(newSketch.Output(), outputImgName); err != nil {
+	if err := saveOutputWithCheck(newSketch.Output(), outputImgName); err != nil {
 		log.Panic(err)
 	}
 }
@@ -64,6 +66,34 @@ func loadImage(filePath string) (image.Image, error) {
 
 	return img, nil
 
+}
+
+func saveOutputWithCheck(img image.Image, filePath string) error {
+	ext := filepath.Ext(filePath)
+	baseName := strings.TrimSuffix(filePath, ext)
+
+	if _, err := os.Stat(filePath); err == nil {
+		newFilePath, err := getNextFileName(baseName, ext)
+		if err != nil {
+			return err
+		}
+		filePath = newFilePath
+	}
+	return saveOutput(img, filePath)
+}
+
+func getNextFileName(baseName, ext string) (string, error) {
+	dir := filepath.Dir(baseName)
+	base := filepath.Base(baseName)
+	base = strings.TrimSuffix(base, ext)
+
+	for i := 1; ; i++ {
+		newFileName := fmt.Sprintf("%s_%d%s", base, i, ext)
+		newFilePath := filepath.Join(dir, newFileName)
+		if _, err := os.Stat(newFilePath); os.IsNotExist(err) {
+			return newFilePath, nil
+		}
+	}
 }
 
 func saveOutput(img image.Image, filePath string) error {

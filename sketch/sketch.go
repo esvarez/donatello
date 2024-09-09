@@ -63,7 +63,7 @@ func (s *Sketch) Update() {
 	// Draw a stroke using the parameters
 	edges := s.MinEdgeCount + rand.Intn(s.MaxEdgeCount-s.MinEdgeCount)
 
-	s.dc.SetRGBA255(r, g, b, int(s.InitialAlpha*255))
+	s.dc.SetRGBA255(r, g, b, int(s.InitialAlpha))
 	s.dc.DrawRegularPolygon(edges, destX, destY, s.strokeSize, rand.Float64())
 	s.dc.FillPreserve()
 
