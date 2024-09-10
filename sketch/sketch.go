@@ -9,11 +9,11 @@ import (
 )
 
 type UserParams struct {
-	DesWidth                 int
-	DesHeight                int
+	DestWidth                int
+	DestHeight               int
 	StrokeRatio              float64
 	StrokeReduction          float64
-	StrokeJitter             float64
+	StrokeJitter             int
 	StrokeInventionThreshold float64
 	InitialAlpha             float64
 	AlphaIncrease            float64
@@ -35,12 +35,12 @@ func NewSketch(source image.Image, userParams UserParams) *Sketch {
 	s := &Sketch{UserParams: userParams}
 	bounds := source.Bounds()
 	s.sourceWidth, s.sourceHeight = bounds.Max.X, bounds.Max.Y
-	initialStrokeSize := s.StrokeRatio * float64(s.DesWidth)
+	initialStrokeSize := s.StrokeRatio * float64(s.DestWidth)
 	s.strokeSize = initialStrokeSize
 
-	canvas := gg.NewContext(s.DesWidth, s.DesHeight)
-	canvas.SetColor(color.black)
-	canvas.DrawRectangle(0, 0, float64(s.DestWith), float64(s.DestHeight))
+	canvas := gg.NewContext(s.DestWidth, s.DestHeight)
+	canvas.SetColor(color.Black)
+	canvas.DrawRectangle(0, 0, float64(s.DestWidth), float64(s.DestHeight))
 	canvas.Fill()
 
 	s.source = source
@@ -55,10 +55,10 @@ func (s *Sketch) Update() {
 	r, g, b := rgb255(s.source.At(int(rndX), int(rndY)))
 
 	// Determine the destination in the output image
-	destX := rndX * float64(s.DesWidth) / float64(s.sourceWidth)
+	destX := rndX * float64(s.DestWidth) / float64(s.sourceWidth)
 	destX += float64(randRange(s.StrokeJitter))
-	destY := rndY * float64(s.DesHeight) / float64(s.sourceHeight)
-	destY += float64(randRange(s.StrokeJitter))
+	destY := rndY * float64(s.DestHeight) / float64(s.sourceHeight)
+	destY += float64(randRange(int(s.StrokeJitter)))
 
 	// Draw a stroke using the parameters
 	edges := s.MinEdgeCount + rand.Intn(s.MaxEdgeCount-s.MinEdgeCount)
@@ -86,6 +86,10 @@ func rgb255(c color.Color) (int, int, int) {
 	return int(r / 255), int(g / 255), int(b / 255)
 }
 
-func (s *Sketch) Output() {
-	// TODO
+func randRange(max int) int {
+	return -max + rand.Intn(2*max)
+}
+
+func (s *Sketch) Output() image.Image {
+	return s.dc.Image()
 }
