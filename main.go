@@ -14,8 +14,8 @@ import (
 
 var (
 	sourceImgName   = "source/img1.jpg"
-	outImgName      = "out/img.ong"
-	totalCycleCount = 500
+	outputImgName   = "out/img.png"
+	totalCycleCount = 100000
 )
 
 func main() {
@@ -26,26 +26,28 @@ func main() {
 		log.Panic(err)
 	}
 
-	desWith := 2000
+	destWith := 2000
 
-	sketch := sketch.NewSketch(img, sketch.UserParams{
-		DesWidth:                 desWith,
-		DesHeight:                2000,
+	newSketch := sketch.NewSketch(img, sketch.UserParams{
+		DestWidth:                destWith,
+		DestHeight:               2000,
 		StrokeRatio:              0.75,
 		StrokeReduction:          0.002,
-		StrokeInventionThreshold: 0.05,
-		StrokeJitter:             int(0.1 * float64(desWidth)),
 		InitialAlpha:             0.1,
 		AlphaIncrease:            0.36,
-		MinEdgeCount:             3,
-		MaxEdgeCount:             4,
+		StrokeInventionThreshold: 0.05,
+		StrokeJitter:             int(0.1 * float64(destWith)),
+		MinEdgeCount:             2,
+		MaxEdgeCount:             3,
 	})
 
 	for i := 0; i < totalCycleCount; i++ {
-		sketch.Update()
+		newSketch.Update()
 	}
 
-	saveOutput(s.Output(), outImgName)
+	if err := saveOutput(newSketch.Output(), outputImgName); err != nil {
+		log.Panic(err)
+	}
 }
 
 func loadImage(filePath string) (image.Image, error) {
@@ -65,7 +67,7 @@ func loadImage(filePath string) (image.Image, error) {
 }
 
 func saveOutput(img image.Image, filePath string) error {
-	f, err := onCreate(filePath)
+	f, err := os.Create(filePath)
 	if err != nil {
 		return err
 	}
